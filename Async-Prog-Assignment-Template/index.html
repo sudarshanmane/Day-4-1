@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+        <link rel="stylesheet" href="index.css">
+        <style>
+            #buttons{
+                display: flex;
+                margin-top: 10px;
+
+
+            }
+            button{
+                margin-right: 30px ;
+                background-color: rgb(167, 144, 144);
+                border-radius: 5px;
+                height: 25px;
+                color: aliceblue;
+            }
+
+            button:hover{
+                background-color: burlywood;
+                color: blue;
+                font-weight: bold;
+            }
+            #movies{
+                margin-top: 20px;
+                height: 400px;
+                display: flex;
+                justify-content: center;
+                
+
+            }
+
+            #movies>img{
+                /* margin-left: -120px; */
+                width: 50%;
+                height: 100%;
+                
+
+            }
+        </style>
+    </head>
+
+    <body>
+        
+        
+        <div id="navbar">
+            <div id="nav1">
+                <div><a href="index.html">Home</a></div>
+                <div><a href="login.html">Login</a></div>
+                <div><a href="signup.html">Signup</a></div>
+            </div>
+              
+        </div>
+
+        <div id="buttons">
+        <div id="slideshow">
+            <!--Show Slideshow here-->
+            <button onclick="showslides()">Show Slideshow</button>
+        </div>
+
+        <div id="sort-buttons">
+            <button onclick="pause()">Pause Slideshow</button>
+
+            <!--Add sorting here-->
+        </div>
+    </div>
+
+        <div id="movies">
+            <!--Show list of movies here-->
+
+        </div>
+    
+
+    
+
+</html>
+
+
+<script>
+
+  
+var arr = [{img:"https://images.pexels.com/photos/733745/pexels-photo-733745.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"},
+   {img:"https://images.pexels.com/photos/3586966/pexels-photo-3586966.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"},
+   {img:"https://images.pexels.com/photos/2055389/pexels-photo-2055389.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"},
+   {img:"https://images.pexels.com/photos/161185/bagan-myanmar-burma-travel-161185.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"},
+   {img:"https://images.pexels.com/photos/2700567/pexels-photo-2700567.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"},
+   {img:"https://images.pexels.com/photos/46253/mt-fuji-sea-of-clouds-sunrise-46253.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"},
+   {img:"https://images.pexels.com/photos/1064162/pexels-photo-1064162.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"}]
+
+
+
+
+    let i = 0;
+ let id
+    function showslides(){
+       
+        let container = document.getElementById("movies")
+        console.log(i)
+            
+        let image = arr[i].img
+              i++;
+
+             let img = document.createElement("img")
+
+             img.src = image;
+
+             container.append(img)
+
+     id = setInterval(function(){
+         container.innerHTML=null;
+
+             let image = arr[i].img
+              i++;
+
+             let img = document.createElement("img") 
+             img.src = image;
+             container.append(img)
+             if(i == arr.length){
+                //  clearInterval(id)
+                i=0;
+             }
+            },500);
+    }
+
+    function pause(){
+
+                 clearInterval(id)
+
+    }
+
+
+    
+</script>

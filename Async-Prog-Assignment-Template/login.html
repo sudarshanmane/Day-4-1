@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+    </head>
+    <link rel="stylesheet" href="index.css">
+
+    <style>
+        
+        form{
+
+display: flex;
+flex-direction: column;
+width: 35%;
+margin: auto;
+margin-top: 50px;
+height: 150px;
+padding-top: 30px;
+padding-bottom: 30px ;
+box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+form>input{
+display: flex;
+height: 30px;
+width: 60%;
+margin: auto;
+
+}
+
+form>input:last-child{
+width:30%;    
+text-align: center;   
+
+
+}
+
+#submit{
+text-align: center;
+padding-left: 7%;
+background-color:rgb(46, 104, 104);
+border-radius: 5px;
+font-size: 18px;
+color: white;
+
+}
+#login{
+margin: auto;
+margin-bottom: 15px;
+}
+    </style>
+
+    <body>
+
+
+       
+        <div id="navbar">
+            <div id="nav1">
+                <div><a href="index.html">Home</a></div>
+                <div><a href="login.html">Login</a></div>
+                <div><a href="signup.html">Signup</a></div>
+            </div>
+              
+        </div>
+
+
+        <div id="login-form-div">
+
+            <form id="form">
+                <!--Write form input elements here-->
+                <input type="text" placeholder="Enter Your Email" id="email">
+                <input type="text" placeholder="Enter Your Password" id="password">
+                <input type="submit" placeholder="Submit" id="submit">
+
+            </form>
+
+        </div>
+    </body>
+
+</html>
+
+<script>
+       var form = document.getElementById("form");
+
+    form.addEventListener("submit",check);
+
+    var signupData = JSON.parse(localStorage.getItem("signupData"))
+    var loginData = JSON.parse(localStorage.getItem("loginData"))
+    
+     var arr = [];
+
+    function check(){
+
+        event.preventDefault();
+
+
+       var data = {
+           email:form.email.value,
+           password:form.password.value,   
+       }
+
+      
+       localStorage.setItem("loginData",JSON.stringify(data));
+
+    
+       if(signupData.email == data.email  && signupData.password == data.password){
+       
+            window.location.href="index.html"
+      
+        }
+        else{
+          alert("invalid Credentials")
+       } 
+
+       
+
+    }
+
+
+</script>
